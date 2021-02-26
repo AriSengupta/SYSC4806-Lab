@@ -13,16 +13,18 @@ public class AddressBookTest {
     BuddyInfo buddyInfo1;
     static final String BUDDY_INFO_1_NAME = "Bob";
     static final String BUDDY_INFO_1_NUMBER = "123-4567";
+    static final String BUDDY_INFO_1_ADDRESS = "Test Address 1";
 
     BuddyInfo buddyInfo2;
     static final String BUDDY_INFO_2_NAME = "Joe";
     static final String BUDDY_INFO_2_NUMBER = "111-2222";
+    static final String BUDDY_INFO_2_ADDRESS = "Test Address 2";
 
     @Before
     public void setUp() {
         addressBook = new AddressBook();
-        buddyInfo1 = new BuddyInfo(BUDDY_INFO_1_NAME, BUDDY_INFO_1_NUMBER);
-        buddyInfo2 = new BuddyInfo(BUDDY_INFO_2_NAME, BUDDY_INFO_2_NUMBER);
+        buddyInfo1 = new BuddyInfo(BUDDY_INFO_1_NAME, BUDDY_INFO_1_NUMBER, BUDDY_INFO_1_ADDRESS);
+        buddyInfo2 = new BuddyInfo(BUDDY_INFO_2_NAME, BUDDY_INFO_2_NUMBER, BUDDY_INFO_2_ADDRESS);
 
         //Enforce address book being empty as a precondition for all tests for this class
         assertTrue(addressBook.getBuddyInfos().isEmpty());
@@ -83,8 +85,10 @@ public class AddressBookTest {
         addressBook.addBuddy(buddyInfo1);
         addressBook.addBuddy(buddyInfo2);
         expected = "Address Book:\n" +
-                "Index: 0, Name: " + BUDDY_INFO_1_NAME + ", Phone Number: " + BUDDY_INFO_1_NUMBER + "\n" +
-                "Index: 1, Name: " + BUDDY_INFO_2_NAME + ", Phone Number: " + BUDDY_INFO_2_NUMBER + "\n";
+                "Index: 0, Name: " + BUDDY_INFO_1_NAME + ", Phone Number: " +
+                BUDDY_INFO_1_NUMBER + ", Address: " + BUDDY_INFO_1_ADDRESS + "\n" +
+                "Index: 1, Name: " + BUDDY_INFO_2_NAME + ", Phone Number: " +
+                BUDDY_INFO_2_NUMBER + ", Address: " + BUDDY_INFO_2_ADDRESS + "\n";
 
         //Print Address Book
         assertEquals(expected, addressBook.toString());

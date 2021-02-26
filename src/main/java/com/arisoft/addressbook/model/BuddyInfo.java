@@ -16,6 +16,7 @@ public class BuddyInfo {
 
     private String name;
     private String phoneNumber;
+    private String address;
     private Long buddyInfoId;
     @JsonIgnore
     private AddressBook addressBook;
@@ -27,13 +28,19 @@ public class BuddyInfo {
     public BuddyInfo(BuddyInfo buddyInfo){
         this.name = buddyInfo.name;
         this.phoneNumber = buddyInfo.phoneNumber;
+        this.address = buddyInfo.address;
         this.buddyInfoId = buddyInfo.buddyInfoId;
         this.addressBook = buddyInfo.addressBook;
     }
 
-    public BuddyInfo(String name, String phoneNumber) {
+    public BuddyInfo(String name, String phoneNumber, String address) {
         this.name = name;
         this.phoneNumber = phoneNumber;
+        this.address = address;
+    }
+
+    public BuddyInfo(String name, String phoneNumber){
+        this(name, phoneNumber, "");
     }
 
     @Id
@@ -62,6 +69,14 @@ public class BuddyInfo {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     @JoinColumn(nullable = false)
     @ManyToOne(cascade = CascadeType.PERSIST)
     public AddressBook getAddressBook() {
@@ -76,6 +91,7 @@ public class BuddyInfo {
         StringBuilder sb = new StringBuilder();
         sb.append("Name: ").append(getName());
         sb.append(", Phone Number: ").append(getPhoneNumber());
+        sb.append(", Address: ").append(getAddress());
         if(buddyInfoId != null) {
             sb.append(", Id: ").append(buddyInfoId);
         }
@@ -86,12 +102,12 @@ public class BuddyInfo {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         BuddyInfo buddyInfo = (BuddyInfo) o;
-
-        if (!Objects.equals(name, buddyInfo.name)) return false;
-        if (!Objects.equals(phoneNumber, buddyInfo.phoneNumber))
-            return false;
-        return Objects.equals(buddyInfoId, buddyInfo.buddyInfoId);
+        return Objects.equals(name, buddyInfo.name) &&
+                Objects.equals(phoneNumber, buddyInfo.phoneNumber) &&
+                Objects.equals(address, buddyInfo.address) &&
+                Objects.equals(buddyInfoId, buddyInfo.buddyInfoId) &&
+                Objects.equals(addressBook, buddyInfo.addressBook);
     }
+
 }

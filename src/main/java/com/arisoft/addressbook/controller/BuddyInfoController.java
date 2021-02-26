@@ -58,6 +58,7 @@ public class BuddyInfoController {
         if(updatedBuddyInfo != null){
             updatedBuddyInfo.setName(buddyInfo.getName());
             updatedBuddyInfo.setPhoneNumber(buddyInfo.getPhoneNumber());
+            updatedBuddyInfo.setAddress((buddyInfo.getAddress()));
             updatedBuddyInfo.setBuddyInfoId(buddyInfo.getBuddyInfoId());
             buddyInfoRepository.save(updatedBuddyInfo);
         } else {

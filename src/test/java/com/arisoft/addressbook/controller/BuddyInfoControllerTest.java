@@ -26,6 +26,7 @@ public class BuddyInfoControllerTest {
 
     static final String BUDDY_INFO_NAME = "Bob";
     static final String BUDDY_INFO_NUMBER = "123-4567";
+    static final String BUDDY_INFO_ADDRESS = "Test Address 1";
 
     @BeforeEach
     public void setup() throws Exception{
@@ -49,11 +50,14 @@ public class BuddyInfoControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\n" +
                         "\t\"name\":\"" + BUDDY_INFO_NAME + "\",\n" +
-                        "\t\"phoneNumber\":\"" + BUDDY_INFO_NUMBER + "\"\n" +
+                        "\t\"phoneNumber\":\"" + BUDDY_INFO_NUMBER + "\",\n" +
+                        "\t\"address\":\"" + BUDDY_INFO_ADDRESS + "\"\n" +
                         "}"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("\"name\":\"" + BUDDY_INFO_NAME + "\"")))
-                .andExpect(content().string(containsString("\"phoneNumber\":\"" + BUDDY_INFO_NUMBER + "\"")));
+                .andExpect(content().string(containsString("\"phoneNumber\":\"" + BUDDY_INFO_NUMBER + "\"")))
+                .andExpect(content().string(containsString("\"address\":\"" + BUDDY_INFO_ADDRESS + "\"")));
+
     }
 
     @Test
@@ -63,7 +67,8 @@ public class BuddyInfoControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\n" +
                         "\t\"name\":\"" + BUDDY_INFO_NAME + "\",\n" +
-                        "\t\"phoneNumber\":\"" + BUDDY_INFO_NUMBER + "\"\n" +
+                        "\t\"phoneNumber\":\"" + BUDDY_INFO_NUMBER + "\",\n" +
+                        "\t\"address\":\"" + BUDDY_INFO_ADDRESS + "\"\n" +
                         "}"))
                 .andExpect(status().isOk());
 
@@ -72,7 +77,8 @@ public class BuddyInfoControllerTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("\"name\":\"" + BUDDY_INFO_NAME + "\"")))
-                .andExpect(content().string(containsString("\"phoneNumber\":\"" + BUDDY_INFO_NUMBER + "\"")));
+                .andExpect(content().string(containsString("\"phoneNumber\":\"" + BUDDY_INFO_NUMBER + "\"")))
+                .andExpect(content().string(containsString("\"address\":\"" + BUDDY_INFO_ADDRESS + "\"")));
     }
 
     @Test
@@ -82,7 +88,8 @@ public class BuddyInfoControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\n" +
                         "\t\"name\":\"" + BUDDY_INFO_NAME + "\",\n" +
-                        "\t\"phoneNumber\":\"" + BUDDY_INFO_NUMBER + "\"\n" +
+                        "\t\"phoneNumber\":\"" + BUDDY_INFO_NUMBER + "\",\n" +
+                        "\t\"address\":\"" + BUDDY_INFO_ADDRESS + "\"\n" +
                         "}"))
                 .andExpect(status().isOk())
                 .andReturn();
@@ -97,6 +104,7 @@ public class BuddyInfoControllerTest {
                 .content("{\n" +
                         "\t\"name\":\"" + BUDDY_INFO_NAME + "\",\n" +
                         "\t\"phoneNumber\":\"000-0000\",\n" +
+                        "\t\"address\":\"Test Address 2\",\n" +
                         "\t\"buddyInfoId\":\"" + buddyInfoId + "\"\n" +
                         "}"))
                 .andExpect(status().isOk());
@@ -107,7 +115,8 @@ public class BuddyInfoControllerTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("\"name\":\"" + BUDDY_INFO_NAME + "\"")))
-                .andExpect(content().string(containsString("\"phoneNumber\":\"000-0000\"")));
+                .andExpect(content().string(containsString("\"phoneNumber\":\"000-0000\"")))
+                .andExpect(content().string(containsString("\"address\":\"Test Address 2\"")));
     }
 
     @Test
@@ -117,7 +126,8 @@ public class BuddyInfoControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\n" +
                         "\t\"name\":\"" + BUDDY_INFO_NAME + "\",\n" +
-                        "\t\"phoneNumber\":\"" + BUDDY_INFO_NUMBER + "\"\n" +
+                        "\t\"phoneNumber\":\"" + BUDDY_INFO_NUMBER + "\",\n" +
+                        "\t\"address\":\"" + BUDDY_INFO_ADDRESS + "\"\n" +
                         "}"))
                 .andExpect(status().isOk())
                 .andReturn();
