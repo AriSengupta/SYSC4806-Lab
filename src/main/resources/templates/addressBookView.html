@@ -26,17 +26,23 @@
     </form>
 </div>
 
-<div id="createNewBuddyInfoForm">
+<div id="createNewBuddyInfoForm" hidden>
     <h1>Create BuddyInfo</h1>
     <form action="#" th:action="@{/createBuddyInfo}" th:object="${buddyInfos}" method="post">
-        <p>Name: <input type="text" th:field="*{name}"/></p>
-        <p>Phone Number: <input type="text" th:field="*{phoneNumber}"/></p>
-        <p>Address: <input type="text" th:field="*{address}"/></p>
+        <p>Name: <label>
+            <input type="text" th:field="*{name}"/>
+        </label></p>
+        <p>Phone Number: <label>
+            <input type="text" th:field="*{phoneNumber}"/>
+        </label></p>
+        <p>Address: <label>
+            <input type="text" th:field="*{address}"/>
+        </label></p>
         <p><input type="submit" value="Add BuddyInfo"/>
     </form>
 </div>
 
-<div id="buddyInfoHeader">
+<div id="buddyInfoHeader" hidden>
     <h1>List of BuddyInfos</h1>
 </div>
 

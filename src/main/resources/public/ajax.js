@@ -23,11 +23,9 @@ $(document).ready(function () {
                             $('<td>').text(item.address)).appendTo('#table_container');
                     });
                 });
+                $('#buddyInfoHeader').show();
+                $('#createNewBuddyInfoForm').show();
             }
-        } else {
-            //AddressBook not found
-            $('#buddyInfoHeader').hide();
-            $('#createNewBuddyInfoForm').hide();
         }
     });
 });
