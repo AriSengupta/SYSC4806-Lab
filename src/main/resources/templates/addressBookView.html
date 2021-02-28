@@ -1,9 +1,12 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Address Book Viewer</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="ajax.js"></script>
 </head>
+
 <style>
     table, th, td {
         border: 1px solid black;
@@ -12,29 +15,33 @@
 
 <body>
 
-<p th:text="${addressBook.addressBookId != null} ? ${'AddressBook Id: ' + addressBook.addressBookId} : 'No Address Book has been created yet'"></p>
+<p th:text="${addressBook.addressBookId != null}
+        ? ${''}
+        : 'No Address Book has been created yet'">
+</p>
 
-<h1>List of BuddyInfos</h1>
+<div>
+    <form action="#" th:action="@{/createAddressBook}" th:object="${addressBook}" method="post">
+        <p><input type="submit" id="submitNewAddressBook" value="Create AddressBook"/></p>
+    </form>
+</div>
 
-<table>
-    <thead>
-    <tr>
-        <th> BuddyInfo ID </th>
-        <th> Name </th>
-        <th> Phone Number </th>
-        <th> Address </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="buddyInfo : ${buddyInfos}">
-        <td><span th:text="${buddyInfo.buddyInfoId}"> ID </span></td>
-        <td><span th:text="${buddyInfo.name}"> Name </span></td>
-        <td><span th:text="${buddyInfo.phoneNumber}"> Phone Number </span></td>
-        <td><span th:text="${buddyInfo.address}"> Address </span></td>
-    </tr>
-    </tbody>
+<div id="createNewBuddyInfoForm">
+    <h1>Create BuddyInfo</h1>
+    <form action="#" th:action="@{/createBuddyInfo}" th:object="${buddyInfos}" method="post">
+        <p>Name: <input type="text" th:field="*{name}"/></p>
+        <p>Phone Number: <input type="text" th:field="*{phoneNumber}"/></p>
+        <p>Address: <input type="text" th:field="*{address}"/></p>
+        <p><input type="submit" value="Add BuddyInfo"/>
+    </form>
+</div>
 
-</table>
+<div id="buddyInfoHeader">
+    <h1>List of BuddyInfos</h1>
+</div>
+
+<div id="table_div">
+</div>
 
 </body>
 </html>

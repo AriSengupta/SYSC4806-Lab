@@ -22,7 +22,7 @@ public class AddressBook {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getAddressBookId() {
         return this.addressBookId;
     }

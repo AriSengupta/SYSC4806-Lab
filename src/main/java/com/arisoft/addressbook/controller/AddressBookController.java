@@ -45,12 +45,12 @@ public class AddressBookController {
     }
 
     @DeleteMapping("/addressbook")
-    public AddressBook deleteAddressBook() {
+    public AddressBook clearAddressBook() {
         AddressBook addressBook = addressBookRepository.findById(1L).orElse(null);
         if(addressBook != null){
             //Delete all Buddy Infos
             buddyInfoRepository.deleteAll();
-            addressBookRepository.save(addressBook);
+            addressBookRepository.save(new AddressBook());
         }
         return addressBookRepository.findById(1L).orElse(null);
     }

@@ -44,7 +44,7 @@ public class BuddyInfo {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getBuddyInfoId() {
         return buddyInfoId;
     }
